@@ -7,6 +7,7 @@ weight: 50
 
 rules:
   - id: lang.fit
+    icon: puzzle
     title:
       en: "Low-level for critical, anything for prototypes"
       ru: "Низкоуровневое для критичного, что угодно для прототипов"
@@ -24,6 +25,7 @@ rules:
     since: "2024-01"
 
   - id: deps.practical
+    icon: boxes
     title:
       en: "Take what you need, skip junk"
       ru: "Бери нужное, пропускай мусор"
@@ -41,6 +43,7 @@ rules:
     since: "2026-01"
 
   - id: smart.hosting
+    icon: server
     title:
       en: "Managed services, minimize raw VDS"
       ru: "Управляемые сервисы, минимум голых VDS"

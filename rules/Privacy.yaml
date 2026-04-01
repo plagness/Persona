@@ -7,6 +7,7 @@ weight: 70
 
 rules:
   - id: show.personality
+    icon: eye
     title:
       en: "Show personality, blur raw data"
       ru: "Показывать личность, размывать сырые данные"
@@ -26,6 +27,7 @@ rules:
     since: "2025-01"
 
   - id: secrets.separate
+    icon: lock
     title:
       en: "Secrets in .env, never in git"
       ru: "Секреты в .env, никогда в git"
@@ -43,6 +45,7 @@ rules:
     since: "2024-01"
 
   - id: masking.flags
+    icon: database
     title:
       en: "DB masking: is_private, is_censored"
       ru: "Маскирование в БД: is_private, is_censored"
@@ -60,6 +63,7 @@ rules:
     since: "2026-02"
 
   - id: hidden.data
+    icon: eye-off
     title:
       en: "Fully hidden: biometrics, finances, precise location"
       ru: "Полностью скрыто: биометрия, финансы, точная геолокация"

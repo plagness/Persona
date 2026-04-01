@@ -7,6 +7,7 @@ weight: 80
 
 rules:
   - id: russian.english
+    icon: message-square
     title:
       en: "Russian talk, English code"
       ru: "Общение на русском, код на английском"
@@ -24,6 +25,7 @@ rules:
     since: "2026-01"
 
   - id: persona.source
+    icon: brain
     title:
       en: "Persona repo = source of truth for agents"
       ru: "Репо Persona = источник истины для агентов"
@@ -41,6 +43,7 @@ rules:
     since: "2026-04"
 
   - id: no.deploy.without
+    icon: shield-check
     title:
       en: "Never deploy without approval"
       ru: "Никогда не деплоить без подтверждения"
@@ -58,6 +61,7 @@ rules:
     since: "2026-03"
 
   - id: quality.first
+    icon: award
     title:
       en: "Quality > speed, fit the task"
       ru: "Качество > скорость, соответствовать задаче"

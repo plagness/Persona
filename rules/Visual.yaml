@@ -7,6 +7,7 @@ weight: 30
 
 rules:
   - id: dark.or.light
+    icon: moon
     title:
       en: "Dark if dark — fully black"
       ru: "Тёмная тема — значит полностью чёрная"
@@ -24,6 +25,7 @@ rules:
     since: "2026-01"
 
   - id: accent.plag
+    icon: palette
     title:
       en: "Per-page accent (plag.space)"
       ru: "Акцент-цвет для каждой страницы (plag.space)"
@@ -41,6 +43,7 @@ rules:
     since: "2026-01"
 
   - id: liquid.glass
+    icon: droplets
     title:
       en: "Liquid Glass — the new standard"
       ru: "Liquid Glass — новый стандарт"
@@ -58,6 +61,7 @@ rules:
     since: "2026-02"
 
   - id: subtle.motion
+    icon: sparkles
     title:
       en: "Subtle animations, never distracting"
       ru: "Тонкие анимации, никогда не отвлекающие"

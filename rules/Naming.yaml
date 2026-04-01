@@ -7,6 +7,7 @@ weight: 10
 
 rules:
   - id: clean.names
+    icon: file-text
     title:
       en: "Clean names without separators"
       ru: "Чистые имена без разделителей"
@@ -26,6 +27,7 @@ rules:
     since: "2025-06"
 
   - id: short.names
+    icon: hash
     title:
       en: "Short, laconic names"
       ru: "Короткие, лаконичные имена"
@@ -43,6 +45,7 @@ rules:
     since: "2025-01"
 
   - id: versioning
+    icon: calendar
     title:
       en: "Version: Year.Month.Day.Rev"
       ru: "Версии: Год.Месяц.День.Ревизия"

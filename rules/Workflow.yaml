@@ -7,6 +7,7 @@ weight: 40
 
 rules:
   - id: push.often
+    icon: upload
     title:
       en: "Push frequently — history is gold"
       ru: "Частый пуш — история бесценна"
@@ -24,6 +25,7 @@ rules:
     since: "2024-01"
 
   - id: commit.style
+    icon: git-branch
     title:
       en: "Conventional commits: fix, feat, refactor"
       ru: "Конвенциональные коммиты: fix, feat, refactor"
@@ -43,6 +45,7 @@ rules:
     since: "2026-02"
 
   - id: tagging
+    icon: tags
     title:
       en: "Tag everything, balance proportions"
       ru: "Тегировать всё, балансируя пропорции"
@@ -60,6 +63,7 @@ rules:
     since: "2026-04"
 
   - id: github.boards
+    icon: layout-dashboard
     title:
       en: "GitHub Projects as task board"
       ru: "GitHub Projects как доска задач"
@@ -77,6 +81,7 @@ rules:
     since: "2026-02"
 
   - id: manual.deploy
+    icon: shield-alert
     title:
       en: "Manual deploy, always verify"
       ru: "Ручной деплой, всегда проверять"

@@ -7,6 +7,7 @@ weight: 20
 
 rules:
   - id: microservices
+    icon: boxes
     title:
       en: "Micro/nano services, no monoliths"
       ru: "Микро/наносервисы, никаких монолитов"
@@ -24,6 +25,7 @@ rules:
     since: "2024-01"
 
   - id: config.over.hardcode
+    icon: settings
     title:
       en: "Config over hardcode"
       ru: "Конфиг вместо хардкода"
@@ -41,6 +43,7 @@ rules:
     since: "2024-06"
 
   - id: arm.uma
+    icon: cpu
     title:
       en: "ARM + UMA is the future"
       ru: "ARM + UMA — это будущее"
@@ -58,6 +61,7 @@ rules:
     since: "2024-01"
 
   - id: domain.symmetry
+    icon: proportions
     title:
       en: "Domain-centric file symmetry"
       ru: "Доменно-центричная симметрия файлов"
@@ -75,6 +79,8 @@ rules:
     since: "2026-01"
 
   - id: cicd
+    icon: circle-play
+    status: desired
     title:
       en: "CI/CD via GitHub Actions"
       ru: "CI/CD через GitHub Actions"
