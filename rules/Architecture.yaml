@@ -1,0 +1,128 @@
+id: architecture
+title:
+  en: "Architecture"
+  ru: "Архитектура"
+category: architecture
+weight: 20
+
+rules:
+  - id: microservices.first
+    title:
+      en: "Micro/nano services over monoliths"
+      ru: "Микро/наносервисы вместо монолитов"
+    body:
+      en: |
+        Every service does one thing. Split by domain into containers,
+        orchestrate with K3s clusters. A monolith is a last resort,
+        not a starting point.
+      ru: |
+        Каждый сервис делает одно дело. Разделение по доменам в контейнеры,
+        оркестрация через K3s кластеры. Монолит — крайняя мера,
+        не начальная точка.
+    severity: must
+    tags: [architecture, containers, k3s]
+    since: "2024-01"
+
+  - id: domain.centric
+    title:
+      en: "Domain-centric file symmetry"
+      ru: "Доменно-центричная симметрия файлов"
+    body:
+      en: |
+        Frontend page, API route, and ETL extractor share the same domain name.
+        `pages/Gaming.tsx` ↔ `routes/games.ts` ↔ `extractors/games.py`.
+        Finding code means knowing the domain.
+      ru: |
+        Страница фронтенда, роут API и ETL экстрактор делят одно имя домена.
+        `pages/Gaming.tsx` ↔ `routes/games.ts` ↔ `extractors/games.py`.
+        Найти код = знать домен.
+    severity: should
+    tags: [structure, organization]
+    since: "2025-03"
+
+  - id: config.over.hardcode
+    title:
+      en: "Configuration over hardcoded values"
+      ru: "Конфиг вместо захардкоженных значений"
+    body:
+      en: |
+        Everything configurable goes into config files, environment variables,
+        or manifest YAML. Avoid changing code to change behavior.
+        `wrangler.toml`, `.env`, `persona.yaml` — not inline strings.
+      ru: |
+        Всё настраиваемое — в конфиг файлы, переменные окружения
+        или манифесты YAML. Не менять код, чтобы изменить поведение.
+        `wrangler.toml`, `.env`, `persona.yaml` — не строки в коде.
+    severity: must
+    tags: [config, maintainability]
+    since: "2024-06"
+
+  - id: arm.first
+    title:
+      en: "ARM-first, UMA architecture focus"
+      ru: "ARM-first, фокус на UMA архитектуру"
+    body:
+      en: |
+        Target ARM + UMA (Unified Memory Architecture) as the primary platform.
+        This is the future of computing. Build and test on ARM, ensure
+        compatibility with Apple Silicon and Raspberry Pi.
+      ru: |
+        Целевая платформа — ARM + UMA (Unified Memory Architecture).
+        Это будущее вычислений. Собирать и тестировать под ARM,
+        обеспечивать совместимость с Apple Silicon и Raspberry Pi.
+    severity: should
+    tags: [hardware, arm, performance]
+    since: "2024-01"
+
+  - id: route.modules
+    title:
+      en: "One Hono sub-app per route file"
+      ru: "Один Hono sub-app на файл роута"
+    body:
+      en: |
+        Each Worker route file creates a `new Hono()` sub-app, exports default.
+        Mounted in `index.ts` via `app.route('/path', module)`.
+        Keeps routes isolated and testable.
+      ru: |
+        Каждый файл роута Worker создаёт `new Hono()` sub-app, экспортирует default.
+        Монтируется в `index.ts` через `app.route('/path', module)`.
+        Роуты изолированы и тестируемы.
+    severity: must
+    tags: [worker, hono, api]
+    since: "2025-03"
+
+  - id: lazy.loading
+    title:
+      en: "Lazy-load all pages in App.tsx"
+      ru: "Lazy-loading всех страниц в App.tsx"
+    body:
+      en: |
+        Every page component wrapped in `lazy(() => import('./pages/X'))`.
+        Combined with Vite manual chunks for heavy deps (echarts, leaflet, motion).
+        Users download only what they visit.
+      ru: |
+        Каждый компонент страницы обёрнут в `lazy(() => import('./pages/X'))`.
+        В сочетании с ручными чанками Vite для тяжёлых зависимостей.
+        Пользователь скачивает только то, что посещает.
+    severity: must
+    tags: [frontend, performance, react]
+    since: "2025-06"
+
+  - id: shared.lib.layers
+    title:
+      en: "Shared utility layers in lib/ directories"
+      ru: "Общие утилиты в директориях lib/"
+    body:
+      en: |
+        Reusable logic lives in `lib/` subdirectories:
+        `worker/src/lib/` (db, types, validate, masking),
+        `scripts/lib/` (db, ks, parsers).
+        Domain code imports from lib, not from other domains.
+      ru: |
+        Переиспользуемая логика живёт в `lib/` поддиректориях:
+        `worker/src/lib/` (db, types, validate, masking),
+        `scripts/lib/` (db, ks, parsers).
+        Доменный код импортирует из lib, не из других доменов.
+    severity: should
+    tags: [structure, reuse]
+    since: "2025-03"

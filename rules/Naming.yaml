@@ -1,0 +1,131 @@
+id: naming
+title:
+  en: "Naming Conventions"
+  ru: "Конвенции именования"
+category: naming
+weight: 10
+
+rules:
+  - id: files.no.separators
+    title:
+      en: "File names avoid dashes and underscores"
+      ru: "Имена файлов без дефисов и подчёркиваний"
+    body:
+      en: |
+        Avoid `-` and `_` in file names. Use PascalCase or dot-separated names.
+        Examples: `GameRules.yaml`, `ProjectCard.tsx`, `Game.Rules.yaml`.
+        Exception: Python files follow language convention (`snake_case.py`).
+      ru: |
+        Избегать `-` и `_` в именах файлов. Использовать PascalCase или точки.
+        Примеры: `GameRules.yaml`, `ProjectCard.tsx`, `Game.Rules.yaml`.
+        Исключение: Python файлы следуют конвенции языка (`snake_case.py`).
+    severity: must
+    tags: [files, naming, style]
+    since: "2025-06"
+
+  - id: react.pascalcase
+    title:
+      en: "React pages and components use PascalCase"
+      ru: "React страницы и компоненты в PascalCase"
+    body:
+      en: |
+        All React `.tsx` files use PascalCase: `Home.tsx`, `ProjectCard.tsx`,
+        `ScrollReveal.tsx`. No exceptions for pages or components.
+      ru: |
+        Все React `.tsx` файлы в PascalCase: `Home.tsx`, `ProjectCard.tsx`,
+        `ScrollReveal.tsx`. Без исключений для страниц и компонентов.
+    severity: must
+    tags: [react, files, typescript]
+    since: "2025-01"
+
+  - id: worker.routes.camelcase
+    title:
+      en: "Worker route files use camelCase"
+      ru: "Файлы роутов Worker в camelCase"
+    body:
+      en: "Worker route modules: `stats.ts`, `movies.ts`, `home.ts`, `v1.ts`."
+      ru: "Модули роутов Worker: `stats.ts`, `movies.ts`, `home.ts`, `v1.ts`."
+    severity: must
+    tags: [worker, files, typescript]
+    since: "2025-01"
+
+  - id: ts.variables.camelcase
+    title:
+      en: "TypeScript variables and functions in camelCase"
+      ru: "Переменные и функции TypeScript в camelCase"
+    body:
+      en: |
+        All TS variables, functions, and local constants use camelCase.
+        `const orderMap`, `parseNum()`, `const BASE`. No SCREAMING_CASE
+        for constants in TypeScript.
+      ru: |
+        Все переменные, функции и локальные константы TS в camelCase.
+        `const orderMap`, `parseNum()`, `const BASE`. Никакого SCREAMING_CASE
+        для констант в TypeScript.
+    severity: must
+    tags: [typescript, variables, functions]
+    since: "2024-01"
+
+  - id: api.json.snake_case
+    title:
+      en: "API JSON keys use snake_case"
+      ru: "JSON ключи API в snake_case"
+    body:
+      en: |
+        All API response JSON keys use snake_case: `geo_points`,
+        `avg_movie_rating`, `total_commits`, `top_languages`.
+        This applies to both internal and v1 public API.
+      ru: |
+        Все JSON ключи в ответах API в snake_case: `geo_points`,
+        `avg_movie_rating`, `total_commits`, `top_languages`.
+        Применяется и к внутреннему, и к публичному v1 API.
+    severity: must
+    tags: [api, json, style]
+    since: "2025-03"
+
+  - id: python.module.constants
+    title:
+      en: "Python module-level constants in SCREAMING_SNAKE_CASE"
+      ru: "Константы модуля Python в SCREAMING_SNAKE_CASE"
+    body:
+      en: |
+        Module-level constants: `REPO_LANG`, `PS_DSN`, `TOOL_KW`.
+        Local variables inside functions stay `snake_case`.
+      ru: |
+        Константы модулей: `REPO_LANG`, `PS_DSN`, `TOOL_KW`.
+        Локальные переменные внутри функций остаются `snake_case`.
+    severity: must
+    tags: [python, constants, style]
+    since: "2024-06"
+
+  - id: db.tables.prefix
+    title:
+      en: "Database tables use ps_ prefix + snake_case"
+      ru: "Таблицы базы данных с префиксом ps_ + snake_case"
+    body:
+      en: |
+        All PlagSpace tables: `ps_weeks`, `ps_coding_weeks`,
+        `ps_persona_rules`. Prefix ensures namespace isolation in shared databases.
+      ru: |
+        Все таблицы PlagSpace: `ps_weeks`, `ps_coding_weeks`,
+        `ps_persona_rules`. Префикс обеспечивает изоляцию пространства имён.
+    severity: must
+    tags: [database, sql, naming]
+    since: "2025-03"
+
+  - id: versioning.date.based
+    title:
+      en: "Version format: Year.Month.Day.Revision"
+      ru: "Формат версий: Год.Месяц.День.Ревизия"
+    body:
+      en: |
+        Version numbers follow `[Year].[Month].[Day].[Revision]`.
+        Example: `26.4.1.1` means April 1, 2026, revision 1.
+        This provides chronological context in every version number.
+      ru: |
+        Версии следуют формату `[Год].[Месяц].[День].[Ревизия]`.
+        Пример: `26.4.1.1` — 1 апреля 2026, ревизия 1.
+        Это даёт хронологический контекст в каждом номере версии.
+    severity: must
+    tags: [versioning, workflow]
+    since: "2025-01"

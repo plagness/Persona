@@ -1,0 +1,77 @@
+id: ai
+title:
+  en: "AI Integration"
+  ru: "Интеграция с ИИ"
+category: ai
+weight: 80
+
+rules:
+  - id: communication.russian
+    title:
+      en: "Communication in Russian, code in English"
+      ru: "Общение на русском, код на английском"
+    body:
+      en: |
+        All human communication happens in Russian.
+        All code, commit messages, API keys, and technical docs are in English.
+        UI supports bilingual (ru/en) via i18n system.
+      ru: |
+        Всё общение с человеком на русском.
+        Весь код, коммиты, API ключи и техническая документация на английском.
+        UI поддерживает двуязычность (ru/en) через систему i18n.
+    severity: must
+    tags: [communication, i18n, language]
+    since: "2025-01"
+
+  - id: verify.privacy
+    title:
+      en: "Verify privacy before publishing data"
+      ru: "Проверять приватность перед публикацией данных"
+    body:
+      en: |
+        Before adding any data to public API or frontend, verify it against
+        privacy rules. Check is_private/is_censored flags. Never expose
+        raw search queries, private channels, GPS routes, or health biometrics.
+      ru: |
+        Перед добавлением данных в публичный API или фронтенд — проверить
+        по правилам приватности. Проверять флаги is_private/is_censored.
+        Никогда не показывать сырые запросы, приватные каналы, GPS маршруты, биометрию.
+    severity: must
+    tags: [privacy, safety, data]
+    since: "2025-03"
+
+  - id: confirm.deploy
+    title:
+      en: "Never deploy without user confirmation"
+      ru: "Никогда не деплоить без подтверждения"
+    body:
+      en: |
+        Deployment to production (Cloudflare Pages/Workers) requires explicit
+        user approval. Always show what will be deployed and wait for confirmation.
+        Local development and testing need no approval.
+      ru: |
+        Деплой в продакшен (Cloudflare Pages/Workers) требует явного
+        подтверждения пользователя. Всегда показать, что будет задеплоено.
+        Локальная разработка и тестирование не требуют подтверждения.
+    severity: must
+    tags: [deploy, safety, workflow]
+    since: "2025-03"
+
+  - id: quality.over.speed
+    title:
+      en: "Quality over speed, minimalism in solutions"
+      ru: "Качество важнее скорости, минимализм в решениях"
+    body:
+      en: |
+        Prefer correct, minimal solutions over fast, complex ones.
+        Don't add features beyond what was asked. Don't add abstractions
+        for hypothetical future needs. Three similar lines are better
+        than a premature abstraction.
+      ru: |
+        Предпочитать корректные, минимальные решения быстрым и сложным.
+        Не добавлять фичи сверх запрошенного. Не создавать абстракции
+        для гипотетических нужд. Три похожие строки лучше
+        преждевременной абстракции.
+    severity: must
+    tags: [philosophy, quality, minimalism]
+    since: "2024-01"

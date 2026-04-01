@@ -1,0 +1,98 @@
+id: languages
+title:
+  en: "Languages"
+  ru: "Языки"
+category: languages
+weight: 60
+
+rules:
+  - id: go.rust.backend
+    title:
+      en: "Go and Rust preferred for backend services"
+      ru: "Go и Rust предпочтительны для бэкенд-сервисов"
+    body:
+      en: |
+        Go for networked services (MCP servers, API gateways, data pipelines).
+        Rust for performance-critical and systems-level code.
+        Both compile to small static binaries ideal for containers.
+      ru: |
+        Go для сетевых сервисов (MCP серверы, API шлюзы, пайплайны данных).
+        Rust для критичного по производительности и системного кода.
+        Оба компилируются в маленькие статические бинарники для контейнеров.
+    severity: should
+    tags: [go, rust, backend]
+    since: "2024-01"
+
+  - id: ts.component.pattern
+    title:
+      en: "TypeScript: export default function, inline props"
+      ru: "TypeScript: export default function, inline props"
+    body:
+      en: |
+        React components: `export default function Name({ prop }: { prop: Type }) {}`.
+        Sub-components: regular `function` declarations without export.
+        Type imports: `import type { X } from 'y'`.
+        Generics for API calls: `get<ResponseType>(path)`.
+      ru: |
+        React компоненты: `export default function Name({ prop }: { prop: Type }) {}`.
+        Подкомпоненты: обычные `function` без экспорта.
+        Импорт типов: `import type { X } from 'y'`.
+        Дженерики для API: `get<ResponseType>(path)`.
+    severity: must
+    tags: [typescript, react, patterns]
+    since: "2025-01"
+
+  - id: python.class.pattern
+    title:
+      en: "Python: PascalCase classes, _private methods, docstrings"
+      ru: "Python: PascalCase классы, _private методы, docstrings"
+    body:
+      en: |
+        Classes: `class MoviesExtractor(BaseExtractor)`.
+        Private methods: `_catalog()`, `_weeks()`.
+        Module docstrings: `"""Description."""` at file top.
+        Standard library imports first, then third-party, then local.
+      ru: |
+        Классы: `class MoviesExtractor(BaseExtractor)`.
+        Приватные методы: `_catalog()`, `_weeks()`.
+        Docstring модулей: `"""Описание."""` в начале файла.
+        Импорты: stdlib, потом third-party, потом локальные.
+    severity: must
+    tags: [python, patterns, etl]
+    since: "2025-03"
+
+  - id: api.response.format
+    title:
+      en: "API responses: snake_case JSON, c.json(), explicit errors"
+      ru: "Ответы API: snake_case JSON, c.json(), явные ошибки"
+    body:
+      en: |
+        All JSON keys in snake_case. Return via `c.json(data)`.
+        Not found: `c.json({ error: 'not found' }, 404)`.
+        Null fields stripped with `stripNulls()` before response.
+      ru: |
+        Все JSON ключи в snake_case. Возврат через `c.json(data)`.
+        Не найдено: `c.json({ error: 'not found' }, 404)`.
+        Null поля убираются через `stripNulls()` перед ответом.
+    severity: must
+    tags: [api, json, worker]
+    since: "2025-03"
+
+  - id: comments.minimal
+    title:
+      en: "Comments explain why, not what"
+      ru: "Комментарии объясняют 'зачем', а не 'что'"
+    body:
+      en: |
+        Code should be self-documenting. Comments only where logic isn't obvious.
+        Section dividers `/* ── name ── */` for visual structure.
+        JSDoc `/** */` only for public utility functions.
+        No commented-out code in production.
+      ru: |
+        Код должен быть самодокументируемым. Комментарии только где логика неочевидна.
+        Разделители `/* ── name ── */` для визуальной структуры.
+        JSDoc `/** */` только для публичных утилит.
+        Никакого закомментированного кода в продакшене.
+    severity: should
+    tags: [comments, readability, style]
+    since: "2025-01"

@@ -1,0 +1,49 @@
+version: "26.4.1.1"
+author: plagness
+name:
+  en: "Valery Tenevoy"
+  ru: "Валерий Теневой"
+updated: "2026-04-01"
+site: https://plag.space
+github: https://github.com/plagness
+
+categories:
+  - id: naming
+    title: { en: "Naming Conventions", ru: "Конвенции именования" }
+    icon: "type"
+    weight: 10
+
+  - id: architecture
+    title: { en: "Architecture", ru: "Архитектура" }
+    icon: "layers"
+    weight: 20
+
+  - id: visual
+    title: { en: "Visual Style", ru: "Визуальный стиль" }
+    icon: "palette"
+    weight: 30
+
+  - id: workflow
+    title: { en: "Workflow", ru: "Рабочий процесс" }
+    icon: "git-branch"
+    weight: 40
+
+  - id: tools
+    title: { en: "Tools & Infra", ru: "Инструменты и инфра" }
+    icon: "wrench"
+    weight: 50
+
+  - id: languages
+    title: { en: "Languages", ru: "Языки" }
+    icon: "code"
+    weight: 60
+
+  - id: privacy
+    title: { en: "Privacy", ru: "Приватность" }
+    icon: "shield"
+    weight: 70
+
+  - id: ai
+    title: { en: "AI Integration", ru: "Интеграция с ИИ" }
+    icon: "bot"
+    weight: 80

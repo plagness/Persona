@@ -1,0 +1,109 @@
+id: tools
+title:
+  en: "Tools & Infrastructure"
+  ru: "Инструменты и инфраструктура"
+category: tools
+weight: 50
+
+rules:
+  - id: low.level.preference
+    title:
+      en: "Prefer low-level languages: Go, Rust, Metal"
+      ru: "Предпочтение низкоуровневых языков: Go, Rust, Metal"
+    body:
+      en: |
+        For backend services and performance-critical code, prefer Go, Rust, or Metal.
+        TypeScript/Python are acceptable for web and ETL.
+        Low-level means more control, better performance, smaller binaries.
+      ru: |
+        Для бэкенд-сервисов и критичного по производительности кода — Go, Rust, Metal.
+        TypeScript/Python допустимы для web и ETL.
+        Низкий уровень = больше контроля, лучше производительность, меньше бинарники.
+    severity: should
+    tags: [languages, performance, backend]
+    since: "2024-01"
+
+  - id: minimal.dependencies
+    title:
+      en: "Minimal dependencies — only what's needed"
+      ru: "Минимум зависимостей — только необходимое"
+    body:
+      en: |
+        Worker: only Hono (one framework). Frontend: React + Tailwind + ECharts + Framer Motion.
+        No utility libraries (lodash, moment, etc.). Native APIs preferred.
+        Every dependency is a liability.
+      ru: |
+        Worker: только Hono (один фреймворк). Frontend: React + Tailwind + ECharts + Framer Motion.
+        Без утилитарных библиотек (lodash, moment и т.д.). Нативные API предпочтительнее.
+        Каждая зависимость — это ответственность.
+    severity: must
+    tags: [dependencies, minimalism, frontend]
+    since: "2025-01"
+
+  - id: code.splitting
+    title:
+      en: "Vite manual chunks for heavy libraries"
+      ru: "Ручные чанки Vite для тяжёлых библиотек"
+    body:
+      en: |
+        Heavy deps split into separate Vite chunks: `echarts`, `leaflet`, `motion`.
+        Combined with lazy page loading, users download only what they visit.
+        Configured in `vite.config.ts` manualChunks.
+      ru: |
+        Тяжёлые зависимости в отдельные чанки Vite: `echarts`, `leaflet`, `motion`.
+        В сочетании с lazy-загрузкой, пользователь скачивает только посещаемое.
+        Настроено в `vite.config.ts` manualChunks.
+    severity: must
+    tags: [vite, performance, frontend]
+    since: "2025-06"
+
+  - id: cloudflare.ecosystem
+    title:
+      en: "Cloudflare ecosystem: Pages, Workers, D1, R2"
+      ru: "Экосистема Cloudflare: Pages, Workers, D1, R2"
+    body:
+      en: |
+        All public-facing infrastructure on Cloudflare:
+        Pages (frontend), Workers (API), D1 (database), R2 (media storage).
+        K3s cluster on Pi5 for internal services.
+      ru: |
+        Вся публичная инфраструктура на Cloudflare:
+        Pages (фронтенд), Workers (API), D1 (база), R2 (медиа).
+        K3s кластер на Pi5 для внутренних сервисов.
+    severity: must
+    tags: [cloudflare, infrastructure, hosting]
+    since: "2025-03"
+
+  - id: dev.environment
+    title:
+      en: "Dev environment: MacBook M1 Pro 16GB, ARM-first"
+      ru: "Среда разработки: MacBook M1 Pro 16GB, ARM-first"
+    body:
+      en: |
+        Primary dev machine: MacBook M1 Pro 16GB.
+        All builds and tests must work on ARM natively.
+        Docker images should support arm64.
+      ru: |
+        Основная машина: MacBook M1 Pro 16GB.
+        Все сборки и тесты должны работать нативно на ARM.
+        Docker-образы должны поддерживать arm64.
+    severity: should
+    tags: [hardware, arm, development]
+    since: "2024-01"
+
+  - id: input.validation
+    title:
+      en: "Validate at boundaries, trust internal code"
+      ru: "Валидация на границах, доверие внутреннему коду"
+    body:
+      en: |
+        Worker routes validate with `intParam()`, `floatParam()` at API entry.
+        Nullish coalescing `??` for safe defaults on output.
+        No defensive programming inside trusted code paths.
+      ru: |
+        Роуты Worker валидируют через `intParam()`, `floatParam()` на входе API.
+        Nullish coalescing `??` для безопасных значений на выходе.
+        Никакого оборонительного программирования внутри доверенного кода.
+    severity: should
+    tags: [validation, api, safety]
+    since: "2025-06"
