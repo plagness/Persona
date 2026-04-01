@@ -6,104 +6,53 @@ category: tools
 weight: 50
 
 rules:
-  - id: low.level.preference
+  - id: lang.fit
     title:
-      en: "Prefer low-level languages: Go, Rust, Metal"
-      ru: "Предпочтение низкоуровневых языков: Go, Rust, Metal"
+      en: "Low-level for critical, anything for prototypes"
+      ru: "Низкоуровневое для критичного, что угодно для прототипов"
     body:
       en: |
-        For backend services and performance-critical code, prefer Go, Rust, or Metal.
-        TypeScript/Python are acceptable for web and ETL.
-        Low-level means more control, better performance, smaller binaries.
+        Go/Rust/Metal for performance-critical code. Python for prototypes and ETL.
+        TypeScript for web. The language fits the task, not the other way around.
+        No dogma — pragmatic choice every time.
       ru: |
-        Для бэкенд-сервисов и критичного по производительности кода — Go, Rust, Metal.
-        TypeScript/Python допустимы для web и ETL.
-        Низкий уровень = больше контроля, лучше производительность, меньше бинарники.
+        Go/Rust/Metal для критичного по производительности кода. Python для прототипов и ETL.
+        TypeScript для веба. Язык подбирается под задачу, а не наоборот.
+        Никакой догмы — прагматичный выбор каждый раз.
     severity: should
-    tags: [languages, performance, backend]
+    tags: [languages, backend, performance]
     since: "2024-01"
 
-  - id: minimal.dependencies
+  - id: deps.practical
     title:
-      en: "Minimal dependencies — only what's needed"
-      ru: "Минимум зависимостей — только необходимое"
+      en: "Take what you need, skip junk"
+      ru: "Бери нужное, пропускай мусор"
     body:
       en: |
-        Worker: only Hono (one framework). Frontend: React + Tailwind + ECharts + Framer Motion.
-        No utility libraries (lodash, moment, etc.). Native APIs preferred.
-        Every dependency is a liability.
+        Freely add libraries for real tasks. No utility belts (lodash, moment)
+        when native APIs suffice. Every dependency should solve a concrete problem,
+        not be insurance against hypothetical needs.
       ru: |
-        Worker: только Hono (один фреймворк). Frontend: React + Tailwind + ECharts + Framer Motion.
-        Без утилитарных библиотек (lodash, moment и т.д.). Нативные API предпочтительнее.
-        Каждая зависимость — это ответственность.
-    severity: must
-    tags: [dependencies, minimalism, frontend]
+        Свободно добавлять библиотеки для реальных задач. Никаких утилитарных
+        комбайнов (lodash, moment), когда хватает нативных API. Каждая зависимость
+        должна решать конкретную задачу, а не быть страховкой на всякий случай.
+    severity: should
+    tags: [dependencies, code, frontend, backend]
     since: "2026-01"
 
-  - id: code.splitting
+  - id: smart.hosting
     title:
-      en: "Vite manual chunks for heavy libraries"
-      ru: "Ручные чанки Vite для тяжёлых библиотек"
+      en: "Managed services, minimize raw VDS"
+      ru: "Управляемые сервисы, минимум голых VDS"
     body:
       en: |
-        Heavy deps split into separate Vite chunks: `echarts`, `leaflet`, `motion`.
-        Combined with lazy page loading, users download only what they visit.
-        Configured in `vite.config.ts` manualChunks.
+        Mix Cloudflare and managed DB strategically. The host is responsible
+        for DB reliability and uptime. Don't dump everything on a raw VDS —
+        use managed services where they make sense.
       ru: |
-        Тяжёлые зависимости в отдельные чанки Vite: `echarts`, `leaflet`, `motion`.
-        В сочетании с lazy-загрузкой, пользователь скачивает только посещаемое.
-        Настроено в `vite.config.ts` manualChunks.
+        Стратегически комбинировать Cloudflare и управляемые БД. Хостер отвечает
+        за надёжность и аптайм БД. Не сваливать всё на голый VDS —
+        использовать управляемые сервисы там, где это разумно.
     severity: must
-    tags: [vite, performance, frontend]
-    since: "2025-12"
-
-  - id: cloudflare.ecosystem
-    title:
-      en: "Cloudflare ecosystem: Pages, Workers, D1, R2"
-      ru: "Экосистема Cloudflare: Pages, Workers, D1, R2"
-    body:
-      en: |
-        All public-facing infrastructure on Cloudflare:
-        Pages (frontend), Workers (API), D1 (database), R2 (media storage).
-        K3s cluster on Pi5 for internal services.
-      ru: |
-        Вся публичная инфраструктура на Cloudflare:
-        Pages (фронтенд), Workers (API), D1 (база), R2 (медиа).
-        K3s кластер на Pi5 для внутренних сервисов.
-    severity: must
-    tags: [cloudflare, infrastructure, hosting]
+    tags: [infra, hosting, cost, backend]
     since: "2026-01"
-
-  - id: dev.environment
-    title:
-      en: "Dev environment: MacBook M1 Pro 16GB, ARM-first"
-      ru: "Среда разработки: MacBook M1 Pro 16GB, ARM-first"
-    body:
-      en: |
-        Primary dev machine: MacBook M1 Pro 16GB.
-        All builds and tests must work on ARM natively.
-        Docker images should support arm64.
-      ru: |
-        Основная машина: MacBook M1 Pro 16GB.
-        Все сборки и тесты должны работать нативно на ARM.
-        Docker-образы должны поддерживать arm64.
-    severity: should
-    tags: [hardware, arm, development]
-    since: "2024-01"
-
-  - id: input.validation
-    title:
-      en: "Validate at boundaries, trust internal code"
-      ru: "Валидация на границах, доверие внутреннему коду"
-    body:
-      en: |
-        Worker routes validate with `intParam()`, `floatParam()` at API entry.
-        Nullish coalescing `??` for safe defaults on output.
-        No defensive programming inside trusted code paths.
-      ru: |
-        Роуты Worker валидируют через `intParam()`, `floatParam()` на входе API.
-        Nullish coalescing `??` для безопасных значений на выходе.
-        Никакого оборонительного программирования внутри доверенного кода.
-    severity: should
-    tags: [validation, api, safety]
-    since: "2025-12"

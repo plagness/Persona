@@ -6,126 +6,57 @@ category: naming
 weight: 10
 
 rules:
-  - id: files.no.separators
+  - id: clean.names
     title:
-      en: "File names avoid dashes and underscores"
-      ru: "Имена файлов без дефисов и подчёркиваний"
+      en: "Clean names without separators"
+      ru: "Чистые имена без разделителей"
     body:
       en: |
-        Avoid `-` and `_` in file names. Use PascalCase or dot-separated names.
-        Examples: `GameRules.yaml`, `ProjectCard.tsx`, `Game.Rules.yaml`.
-        Exception: Python files follow language convention (`snake_case.py`).
+        Avoid `-` and `_` everywhere. PascalCase for files, camelCase for variables,
+        dots for configs. Snake_case only where the language demands it
+        (Python modules, SQL legacy columns).
+        Examples: `ProjectCard.tsx`, `apiClient.ts`, `Game.Rules.yaml`.
       ru: |
-        Избегать `-` и `_` в именах файлов. Использовать PascalCase или точки.
-        Примеры: `GameRules.yaml`, `ProjectCard.tsx`, `Game.Rules.yaml`.
-        Исключение: Python файлы следуют конвенции языка (`snake_case.py`).
+        Избегать `-` и `_` повсюду. PascalCase для файлов, camelCase для переменных,
+        точки для конфигов. Snake_case только там, где требует язык
+        (модули Python, legacy-колонки SQL).
+        Примеры: `ProjectCard.tsx`, `apiClient.ts`, `Game.Rules.yaml`.
     severity: must
-    tags: [files, naming, style]
+    tags: [naming, code, frontend, backend]
     since: "2025-06"
 
-  - id: react.pascalcase
+  - id: short.names
     title:
-      en: "React pages and components use PascalCase"
-      ru: "React страницы и компоненты в PascalCase"
+      en: "Short, laconic names"
+      ru: "Короткие, лаконичные имена"
     body:
       en: |
-        All React `.tsx` files use PascalCase: `Home.tsx`, `ProjectCard.tsx`,
-        `ScrollReveal.tsx`. No exceptions for pages or components.
+        Prefer short names and explain context elsewhere. `api.ts` not
+        `apiClientWrapper.ts`. If the name needs a comment to explain,
+        the structure is wrong, not the name.
       ru: |
-        Все React `.tsx` файлы в PascalCase: `Home.tsx`, `ProjectCard.tsx`,
-        `ScrollReveal.tsx`. Без исключений для страниц и компонентов.
-    severity: must
-    tags: [react, files, typescript]
+        Предпочитать короткие имена, контекст объяснять в другом месте.
+        `api.ts`, а не `apiClientWrapper.ts`. Если имя требует комментария —
+        проблема в структуре, а не в имени.
+    severity: should
+    tags: [naming, code, readability]
     since: "2025-01"
 
-  - id: worker.routes.camelcase
+  - id: versioning
     title:
-      en: "Worker route files use camelCase"
-      ru: "Файлы роутов Worker в camelCase"
-    body:
-      en: "Worker route modules: `stats.ts`, `movies.ts`, `home.ts`, `v1.ts`."
-      ru: "Модули роутов Worker: `stats.ts`, `movies.ts`, `home.ts`, `v1.ts`."
-    severity: must
-    tags: [worker, files, typescript]
-    since: "2025-01"
-
-  - id: ts.variables.camelcase
-    title:
-      en: "TypeScript variables and functions in camelCase"
-      ru: "Переменные и функции TypeScript в camelCase"
-    body:
-      en: |
-        All TS variables, functions, and local constants use camelCase.
-        `const orderMap`, `parseNum()`, `const BASE`. No SCREAMING_CASE
-        for constants in TypeScript.
-      ru: |
-        Все переменные, функции и локальные константы TS в camelCase.
-        `const orderMap`, `parseNum()`, `const BASE`. Никакого SCREAMING_CASE
-        для констант в TypeScript.
-    severity: must
-    tags: [typescript, variables, functions]
-    since: "2024-01"
-
-  - id: api.json.snake_case
-    title:
-      en: "API JSON keys use snake_case"
-      ru: "JSON ключи API в snake_case"
-    body:
-      en: |
-        All API response JSON keys use snake_case: `geo_points`,
-        `avg_movie_rating`, `total_commits`, `top_languages`.
-        This applies to both internal and v1 public API.
-      ru: |
-        Все JSON ключи в ответах API в snake_case: `geo_points`,
-        `avg_movie_rating`, `total_commits`, `top_languages`.
-        Применяется и к внутреннему, и к публичному v1 API.
-    severity: must
-    tags: [api, json, style]
-    since: "2025-03"
-
-  - id: python.module.constants
-    title:
-      en: "Python module-level constants in SCREAMING_SNAKE_CASE"
-      ru: "Константы модуля Python в SCREAMING_SNAKE_CASE"
-    body:
-      en: |
-        Module-level constants: `REPO_LANG`, `PS_DSN`, `TOOL_KW`.
-        Local variables inside functions stay `snake_case`.
-      ru: |
-        Константы модулей: `REPO_LANG`, `PS_DSN`, `TOOL_KW`.
-        Локальные переменные внутри функций остаются `snake_case`.
-    severity: must
-    tags: [python, constants, style]
-    since: "2024-06"
-
-  - id: db.tables.prefix
-    title:
-      en: "Database tables use ps_ prefix + snake_case"
-      ru: "Таблицы базы данных с префиксом ps_ + snake_case"
-    body:
-      en: |
-        All PlagSpace tables: `ps_weeks`, `ps_coding_weeks`,
-        `ps_persona_rules`. Prefix ensures namespace isolation in shared databases.
-      ru: |
-        Все таблицы PlagSpace: `ps_weeks`, `ps_coding_weeks`,
-        `ps_persona_rules`. Префикс обеспечивает изоляцию пространства имён.
-    severity: must
-    tags: [database, sql, naming]
-    since: "2025-03"
-
-  - id: versioning.date.based
-    title:
-      en: "Version format: Year.Month.Day.Revision"
-      ru: "Формат версий: Год.Месяц.День.Ревизия"
+      en: "Version: Year.Month.Day.Rev"
+      ru: "Версии: Год.Месяц.День.Ревизия"
     body:
       en: |
         Version numbers follow `[Year].[Month].[Day].[Revision]`.
         Example: `26.4.1.1` means April 1, 2026, revision 1.
-        This provides chronological context in every version number.
+        No semver for personal projects — date-based versioning gives
+        chronological context in every version number.
       ru: |
         Версии следуют формату `[Год].[Месяц].[День].[Ревизия]`.
         Пример: `26.4.1.1` — 1 апреля 2026, ревизия 1.
-        Это даёт хронологический контекст в каждом номере версии.
+        Никакого semver для личных проектов — версия по дате
+        даёт хронологический контекст в каждом номере.
     severity: must
-    tags: [versioning, workflow]
+    tags: [versioning, workflow, git]
     since: "2026-01"

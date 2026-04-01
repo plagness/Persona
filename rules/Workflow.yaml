@@ -6,29 +6,10 @@ category: workflow
 weight: 40
 
 rules:
-  - id: commit.prefixes
+  - id: push.often
     title:
-      en: "Commit prefixes: fix, feat, refactor, redesign, seo, audit"
-      ru: "Префиксы коммитов: fix, feat, refactor, redesign, seo, audit"
-    body:
-      en: |
-        Every commit message starts with a type prefix:
-        `fix:` bug fix, `feat:` new feature, `refactor:` code restructure,
-        `redesign:` visual overhaul, `seo:` search optimization, `audit:` review.
-        English only, concise (8-80 chars).
-      ru: |
-        Каждый коммит начинается с префикса типа:
-        `fix:` баг, `feat:` фича, `refactor:` рефактор,
-        `redesign:` визуальный редизайн, `seo:` SEO, `audit:` аудит.
-        Только на английском, кратко (8-80 символов).
-    severity: must
-    tags: [git, commits, style]
-    since: "2026-02"
-
-  - id: active.pushing
-    title:
-      en: "Push frequently — preserve history"
-      ru: "Частый пуш — сохранение истории"
+      en: "Push frequently — history is gold"
+      ru: "Частый пуш — история бесценна"
     body:
       en: |
         Push almost every meaningful action to git. This preserves full history
@@ -39,75 +20,75 @@ rules:
         и позволяет быстрый откат. Много маленьких коммитов лучше одного большого.
         История — самая ценная часть репозитория.
     severity: must
-    tags: [git, workflow, history]
+    tags: [git, workflow, backend, frontend]
     since: "2024-01"
 
-  - id: github.projects.board
+  - id: commit.style
     title:
-      en: "GitHub Projects as task board by departments"
-      ru: "GitHub Projects как доска задач по департаментам"
+      en: "Conventional commits: fix, feat, refactor"
+      ru: "Конвенциональные коммиты: fix, feat, refactor"
     body:
       en: |
-        Use GitHub Projects for task management. Boards are organized
-        by departments/domains. Issues link to branches and PRs.
+        Every commit message starts with a type prefix:
+        `fix:` bug fix, `feat:` new feature, `refactor:` code restructure,
+        `redesign:` visual overhaul, `seo:` search optimization, `audit:` review.
+        English only, concise.
+      ru: |
+        Каждый коммит начинается с префикса типа:
+        `fix:` баг, `feat:` фича, `refactor:` рефактор,
+        `redesign:` визуальный редизайн, `seo:` SEO, `audit:` аудит.
+        Только на английском, кратко.
+    severity: must
+    tags: [git, workflow, code]
+    since: "2026-02"
+
+  - id: tagging
+    title:
+      en: "Tag everything, balance proportions"
+      ru: "Тегировать всё, балансируя пропорции"
+    body:
+      en: |
+        More tags are better than fewer. Use multiple tag types: general, zones,
+        themes. Not too broad (useless), not too granular (noise).
+        Tags are the primary way to find and connect things.
+      ru: |
+        Больше тегов лучше, чем меньше. Разные типы: общие, зоны, темы.
+        Не слишком широко (бесполезно), не слишком мелко (шум).
+        Теги — основной способ находить и связывать вещи.
+    severity: should
+    tags: [workflow, organization, data]
+    since: "2026-04"
+
+  - id: github.boards
+    title:
+      en: "GitHub Projects as task board"
+      ru: "GitHub Projects как доска задач"
+    body:
+      en: |
+        Use GitHub Projects for task management. Boards organized
+        by departments and domains. Issues link to branches and PRs.
         No external task trackers needed.
       ru: |
         GitHub Projects для управления задачами. Доски организованы
-        по департаментам/доменам. Issue привязаны к веткам и PR.
+        по департаментам и доменам. Issue привязаны к веткам и PR.
         Внешние трекеры задач не нужны.
     severity: should
-    tags: [github, tasks, organization]
-    since: "2026-02"
-
-  - id: branch.strategy
-    title:
-      en: "main for development, release for production"
-      ru: "main для разработки, release для продакшена"
-    body:
-      en: |
-        `main` — active development, all commits go here first.
-        `release` — stable production, merged periodically from main.
-        No feature branches for solo work. Linear history preferred.
-      ru: |
-        `main` — активная разработка, все коммиты сначала сюда.
-        `release` — стабильный продакшен, мёрж из main периодически.
-        Без feature-веток для соло-работы. Линейная история предпочтительна.
-    severity: must
-    tags: [git, branches, workflow]
+    tags: [workflow, git, organization]
     since: "2026-02"
 
   - id: manual.deploy
     title:
-      en: "Manual deploy via wrangler CLI"
-      ru: "Ручной деплой через wrangler CLI"
+      en: "Manual deploy, always verify"
+      ru: "Ручной деплой, всегда проверять"
     body:
       en: |
-        No auto-deploy configured. All deployments are manual:
-        `wrangler pages deploy dist --project-name=space --branch=release`
-        Always verify `--project-name` before deploying.
+        All deployments are manual and require verification before execution.
+        Always check `--project-name` and target environment.
+        Incident: accidentally deployed wrong project (2026-03-28).
       ru: |
-        Автодеплой не настроен. Все деплои ручные:
-        `wrangler pages deploy dist --project-name=space --branch=release`
-        Всегда проверять `--project-name` перед деплоем.
+        Все деплои ручные и требуют проверки перед выполнением.
+        Всегда проверять `--project-name` и целевое окружение.
+        Инцидент: случайно задеплоил не тот проект (2026-03-28).
     severity: must
-    tags: [deploy, cloudflare, safety]
-    since: "2026-03"
-
-  - id: etl.pipeline
-    title:
-      en: "ETL pipeline: KS → PostgreSQL → D1"
-      ru: "ETL пайплайн: KS → PostgreSQL → D1"
-    body:
-      en: |
-        Data flows through three stages:
-        1. `python3 scripts/etl.py` — KS → PostgreSQL (22 extractors, ~9s)
-        2. `bash scripts/dump.sh --push` — PostgreSQL → VDS backup
-        3. `python3 scripts/exportD1.py` — PostgreSQL → D1 SQL export
-      ru: |
-        Данные проходят три этапа:
-        1. `python3 scripts/etl.py` — KS → PostgreSQL (22 экстрактора, ~9с)
-        2. `bash scripts/dump.sh --push` — PostgreSQL → VDS бекап
-        3. `python3 scripts/exportD1.py` — PostgreSQL → D1 SQL экспорт
-    severity: must
-    tags: [etl, data, pipeline]
+    tags: [deploy, safety, infra]
     since: "2026-03"

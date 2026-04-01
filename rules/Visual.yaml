@@ -6,140 +6,70 @@ category: visual
 weight: 30
 
 rules:
-  - id: oled.dark.only
+  - id: dark.or.light
     title:
-      en: "OLED dark theme, no light mode"
-      ru: "OLED тёмная тема, без светлого режима"
+      en: "Dark if dark — fully black"
+      ru: "Тёмная тема — значит полностью чёрная"
     body:
       en: |
-        Pure black backgrounds optimized for OLED displays.
-        Background: `#000000`, Surface: `#0a0a0a`, Card: `#0d0d0d`.
-        No light theme variant exists or is planned.
+        Personal site (plag.space): OLED black, no compromises.
+        Other projects can be light if the case demands it (module.cast).
+        The key is to commit to the choice fully — no half-measures.
       ru: |
-        Чёрный фон, оптимизированный для OLED дисплеев.
-        Background: `#000000`, Surface: `#0a0a0a`, Card: `#0d0d0d`.
-        Светлой темы нет и не планируется.
+        Личный сайт (plag.space): OLED чёрный, без компромиссов.
+        Другие проекты могут быть светлыми, если того требует кейс (module.cast).
+        Главное — полностью следовать выбору, без полумер.
     severity: must
-    tags: [theme, colors, oled]
-    since: "2025-01"
-
-  - id: border.opacity.hierarchy
-    title:
-      en: "Border opacity hierarchy: 0.06 → 0.08 → 0.15"
-      ru: "Иерархия прозрачности рамок: 0.06 → 0.08 → 0.15"
-    body:
-      en: |
-        Subtle: `rgba(255,255,255,0.06)` — secondary borders.
-        Standard: `rgba(255,255,255,0.08)` — card borders.
-        Hover: `rgba(255,255,255,0.15)` — interactive lift.
-      ru: |
-        Тонкие: `rgba(255,255,255,0.06)` — вторичные рамки.
-        Стандартные: `rgba(255,255,255,0.08)` — рамки карточек.
-        Hover: `rgba(255,255,255,0.15)` — интерактивный подъём.
-    severity: must
-    tags: [borders, colors, ui]
+    tags: [design, ux, frontend, theme]
     since: "2026-01"
 
-  - id: glass.morphism
+  - id: accent.plag
     title:
-      en: "Glass morphism with backdrop blur"
-      ru: "Glass morphism с backdrop blur"
+      en: "Per-page accent (plag.space)"
+      ru: "Акцент-цвет для каждой страницы (plag.space)"
     body:
       en: |
-        Standard glass: `bg-[#0a0a0a]/70 backdrop-blur-xl`.
-        Nav: `backdrop-blur-[28px] saturate(1.2)`.
-        Modal: `backdrop-blur-[40px] saturate(1.3)`.
-        Always with `border border-white/[0.08]`.
+        Each page section on plag.space has its own unique accent color.
+        This is specific to plag.space, not a universal rule.
+        Accent is used in gradients, borders, glows, and badges.
       ru: |
-        Стандартное стекло: `bg-[#0a0a0a]/70 backdrop-blur-xl`.
-        Nav: `backdrop-blur-[28px] saturate(1.2)`.
-        Modal: `backdrop-blur-[40px] saturate(1.3)`.
-        Всегда с `border border-white/[0.08]`.
+        Каждая секция plag.space имеет свой уникальный акцент-цвет.
+        Это правило специфично для plag.space, а не универсально.
+        Акцент используется в градиентах, рамках, свечениях и бейджах.
     severity: should
-    tags: [glass, blur, ui]
+    tags: [design, colors, frontend]
     since: "2026-01"
 
-  - id: accent.per.page
+  - id: liquid.glass
     title:
-      en: "Unique accent color per page section"
-      ru: "Уникальный акцент-цвет для каждой секции"
+      en: "Liquid Glass — the new standard"
+      ru: "Liquid Glass — новый стандарт"
     body:
       en: |
-        Each nav page has its own accent color defined in `design.ts` navAccents:
-        Home #F59E0B, Gaming #22C55E, Kino #EF4444, Media #F43F5E,
-        Focus #06B6D4, Projects #A855F7, Code #6366F1, etc.
-        Accent is used in gradients, borders, glows, badges.
+        Apple Liquid Glass (2025): optical distortions, volumetric interfaces.
+        The transition from flat glass to refractive, dynamic, alive surfaces.
+        This is the new direction for interface design.
       ru: |
-        Каждая страница имеет свой акцент-цвет в `design.ts` navAccents:
-        Home #F59E0B, Gaming #22C55E, Kino #EF4444, Media #F43F5E,
-        Focus #06B6D4, Projects #A855F7, Code #6366F1 и т.д.
-        Акцент используется в градиентах, рамках, свечениях, бейджах.
-    severity: must
-    tags: [colors, design, navigation]
-    since: "2026-01"
-
-  - id: text.hierarchy
-    title:
-      en: "Text color hierarchy: #fff → #a0a0a0 → #666 → #333"
-      ru: "Иерархия цветов текста: #fff → #a0a0a0 → #666 → #333"
-    body:
-      en: |
-        Primary: `#ffffff` — headings, CTAs.
-        Secondary: `#a0a0a0` — subheadings, descriptions.
-        Muted: `#666666` — labels, metadata, timestamps.
-        Dim: `#333333` — disabled, background text.
-      ru: |
-        Основной: `#ffffff` — заголовки, CTA.
-        Вторичный: `#a0a0a0` — подзаголовки, описания.
-        Приглушённый: `#666666` — метки, метаданные, время.
-        Тёмный: `#333333` — неактивный, фоновый текст.
-    severity: must
-    tags: [typography, colors]
-    since: "2025-01"
-
-  - id: cards.rounded
-    title:
-      en: "Cards: rounded-2xl, p-5/p-6, white/[0.08] border"
-      ru: "Карточки: rounded-2xl, p-5/p-6, рамка white/[0.08]"
-    body:
-      en: |
-        Standard card recipe: `bg-[#0a0a0a] border border-white/[0.08]
-        rounded-2xl p-5`. Enhanced glass variant adds
-        `backdrop-blur-xl bg-[#0a0a0a]/70`.
-      ru: |
-        Стандартный рецепт карточки: `bg-[#0a0a0a] border border-white/[0.08]
-        rounded-2xl p-5`. Вариант со стеклом добавляет
-        `backdrop-blur-xl bg-[#0a0a0a]/70`.
+        Apple Liquid Glass (2025): оптические искажения, объёмные интерфейсы.
+        Переход от плоского стекла к преломляющим, динамичным, живым поверхностям.
+        Это новое направление в дизайне интерфейсов.
     severity: should
-    tags: [cards, components, ui]
-    since: "2026-01"
-
-  - id: section.dividers
-    title:
-      en: "Section dividers: /* -- section -- */"
-      ru: "Разделители секций: /* -- section -- */"
-    body:
-      en: "Use `/* ── section name ── */` comments to visually separate code sections in components."
-      ru: "Использовать `/* ── название секции ── */` комментарии для визуального разделения секций в компонентах."
-    severity: prefer
-    tags: [code, comments, style]
+    tags: [design, ux, frontend, trend]
     since: "2026-02"
 
-  - id: framer.motion.patterns
+  - id: subtle.motion
     title:
-      en: "Framer Motion: subtle scale shifts, spring physics"
-      ru: "Framer Motion: лёгкие scale-сдвиги, пружинная физика"
+      en: "Subtle animations, never distracting"
+      ru: "Тонкие анимации, никогда не отвлекающие"
     body:
       en: |
-        Card hover: `scale: 1.015, y: -3`. Tap: `scale: 0.98`.
-        ScrollReveal: `opacity 0→1, y 30→0, duration 0.6`.
-        Springs: `stiffness: 300-400, damping: 25-30`.
-        All animations are subtle, never distracting.
+        Animations serve the user, not the designer. Subtle scale shifts,
+        gentle fades, spring physics. If the user notices the animation
+        before the content, it's too much.
       ru: |
-        Hover карточки: `scale: 1.015, y: -3`. Tap: `scale: 0.98`.
-        ScrollReveal: `opacity 0→1, y 30→0, duration 0.6`.
-        Пружины: `stiffness: 300-400, damping: 25-30`.
-        Все анимации тонкие, не отвлекающие.
+        Анимации служат пользователю, а не дизайнеру. Лёгкие сдвиги масштаба,
+        плавные затухания, пружинная физика. Если пользователь замечает
+        анимацию раньше контента — это перебор.
     severity: should
-    tags: [animation, framer, ui]
+    tags: [animation, ux, frontend, performance]
     since: "2026-02"

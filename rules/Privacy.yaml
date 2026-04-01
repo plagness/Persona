@@ -6,87 +6,72 @@ category: privacy
 weight: 70
 
 rules:
-  - id: env.gitignored
+  - id: show.personality
     title:
-      en: "Credentials in .env, always gitignored"
-      ru: "Креденшелы в .env, всегда в gitignore"
+      en: "Show personality, blur raw data"
+      ru: "Показывать личность, размывать сырые данные"
     body:
       en: |
-        All secrets, API keys, database passwords live in `.env`.
+        Core principle: don't publish what can harm, show personality through
+        blurred data. Movies and games are open. Search queries become topic clusters.
+        GPS rounded to 2 decimals. Health reduced to a score.
+        The goal is to reveal who you are, not what you did minute by minute.
+      ru: |
+        Основной принцип: не публиковать то, что может навредить, показывать
+        личность через размытые данные. Фильмы и игры открыты. Поисковые запросы
+        становятся topic clusters. GPS округлён до 2 знаков. Здоровье — только оценка.
+        Цель — показать кто ты, а не что делал поминутно.
+    severity: must
+    tags: [privacy, data, api, philosophy]
+    since: "2025-01"
+
+  - id: secrets.separate
+    title:
+      en: "Secrets in .env, never in git"
+      ru: "Секреты в .env, никогда в git"
+    body:
+      en: |
+        All secrets, API keys, and database passwords live in `.env`.
         The `.env` file is always in `.gitignore`. Never commit credentials.
         Cloudflare secrets via `wrangler secret put`.
       ru: |
-        Все секреты, API ключи, пароли баз в `.env`.
+        Все секреты, API ключи и пароли баз живут в `.env`.
         Файл `.env` всегда в `.gitignore`. Никогда не коммитить креденшелы.
         Секреты Cloudflare через `wrangler secret put`.
     severity: must
-    tags: [security, git, secrets]
+    tags: [security, git, infra]
     since: "2024-01"
 
-  - id: db.privacy.flags
+  - id: masking.flags
     title:
-      en: "Database privacy flags: is_private, is_censored"
-      ru: "Флаги приватности в БД: is_private, is_censored"
+      en: "DB masking: is_private, is_censored"
+      ru: "Маскирование в БД: is_private, is_censored"
     body:
       en: |
         Records can be marked with `is_private` or `is_censored` flags.
-        Masking functions in `worker/src/lib/masking.ts` replace sensitive fields
-        with labels before API response. Applied in route handlers.
+        Masking functions replace sensitive fields with labels before API response.
+        This is the database-level privacy layer — applied in route handlers.
       ru: |
         Записи могут быть помечены флагами `is_private` или `is_censored`.
-        Функции маскирования в `worker/src/lib/masking.ts` заменяют чувствительные поля
-        на метки перед ответом API. Применяются в обработчиках роутов.
+        Функции маскирования заменяют чувствительные поля метками перед ответом API.
+        Это слой приватности на уровне базы — применяется в обработчиках роутов.
     severity: must
-    tags: [database, privacy, masking]
+    tags: [privacy, database, api, backend]
     since: "2026-02"
 
-  - id: youtube.categories.only
+  - id: hidden.data
     title:
-      en: "YouTube: categories only, private channels censored"
-      ru: "YouTube: только категории, приватные каналы цензурируются"
+      en: "Fully hidden: biometrics, finances, precise location"
+      ru: "Полностью скрыто: биометрия, финансы, точная геолокация"
     body:
       en: |
-        YouTube data is aggregated by category (Gaming, Education, etc.).
-        Private channels are masked: name → private_label, channel_id → null.
-        No watch history, no specific video titles.
+        Some data categories are never exposed in any form: biometric measurements,
+        financial transactions, precise GPS coordinates, raw health data.
+        These are not blurred or aggregated — they simply don't exist in the public layer.
       ru: |
-        YouTube данные агрегируются по категориям (Gaming, Education и т.д.).
-        Приватные каналы маскируются: name → private_label, channel_id → null.
-        Без истории просмотров, без конкретных видео.
+        Некоторые категории данных никогда не публикуются ни в каком виде: биометрия,
+        финансовые транзакции, точные GPS координаты, сырые данные здоровья.
+        Они не размываются и не агрегируются — их просто нет в публичном слое.
     severity: must
-    tags: [youtube, privacy, data]
-    since: "2026-01"
-
-  - id: search.topics.only
-    title:
-      en: "Search: topic clusters only, no raw queries"
-      ru: "Поиск: только topic clusters, без сырых запросов"
-    body:
-      en: |
-        Search data is pre-aggregated into topic clusters (Python, Travel, etc.).
-        Raw search queries are never stored or exposed.
-        Focus page shows 56 topic categories, not individual searches.
-      ru: |
-        Поисковые данные заранее агрегируются в topic clusters (Python, Travel и т.д.).
-        Сырые поисковые запросы никогда не хранятся и не отдаются.
-        Страница Focus показывает 56 категорий, не отдельные запросы.
-    severity: must
-    tags: [search, privacy, data]
-    since: "2026-01"
-
-  - id: geo.low.precision
-    title:
-      en: "GPS: 2 decimal places (~1.1km), no timestamps"
-      ru: "GPS: 2 знака после запятой (~1.1км), без дат"
-    body:
-      en: |
-        Geographic points rounded to 2 decimal places (~1.1km precision).
-        No timestamps attached to locations. Heatmap only, no routes.
-        Enough for city-level visualization, not for tracking.
-      ru: |
-        Географические точки округлены до 2 знаков (~1.1км точности).
-        Без дат у локаций. Только тепловая карта, без маршрутов.
-        Достаточно для визуализации на уровне города, не для трекинга.
-    severity: must
-    tags: [geo, privacy, gps]
-    since: "2026-01"
+    tags: [privacy, data, security]
+    since: "2025-01"
