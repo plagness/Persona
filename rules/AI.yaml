@@ -77,3 +77,22 @@ rules:
     severity: must
     tags: [philosophy, code, quality]
     since: "2024-01"
+
+  - id: agent.testing
+    icon: monitor
+    title:
+      en: "Agents create self-testing tools"
+      ru: "Агенты создают инструменты для самотестирования"
+    body:
+      en: |
+        Agents should create tools to test the product themselves —
+        screenshots, mouse control, UI verification. Check if screenshot/input
+        capabilities are available. Moving towards Skills as the new standard
+        beyond MCP.
+      ru: |
+        Агенты должны создавать инструменты для самотестирования продукта —
+        скриншоты, управление мышью, проверка UI. Проверять доступность
+        скриншотов и ввода. Движемся к Skills как новому стандарту помимо MCP.
+    severity: should
+    tags: [ai, testing, workflow, automation]
+    since: "2026-04"

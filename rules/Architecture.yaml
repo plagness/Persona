@@ -96,3 +96,22 @@ rules:
     severity: should
     tags: [workflow, git, testing, infra]
     since: "2026-04"
+
+  - id: observability
+    icon: activity
+    status: desired
+    title:
+      en: "Observability: if it runs, it has metrics"
+      ru: "Наблюдаемость: если работает — есть метрики"
+    body:
+      en: |
+        Every service exports Prometheus metrics. Grafana dashboards for each domain.
+        Middleware tracks duration, status, tool calls.
+        If you can't measure it, you can't improve it.
+      ru: |
+        Каждый сервис экспортирует Prometheus метрики. Grafana дашборды для каждого домена.
+        Middleware отслеживает duration, status, вызовы инструментов.
+        Если не можешь измерить — не можешь улучшить.
+    severity: should
+    tags: [infra, backend, monitoring, performance]
+    since: "2026-04"

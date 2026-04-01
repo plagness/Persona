@@ -59,3 +59,21 @@ rules:
     severity: must
     tags: [infra, hosting, cost, backend]
     since: "2026-01"
+
+  - id: ready.made
+    icon: package
+    title:
+      en: "Ready-made tools, not self-written"
+      ru: "Готовые инструменты, не самописные"
+    body:
+      en: |
+        Use mature open-source solutions (LightRAG, mem0, Qdrant, Neo4j)
+        instead of building from scratch. Focus on integration and orchestration,
+        not infrastructure. Don't reinvent what already works well.
+      ru: |
+        Использовать зрелые open-source решения (LightRAG, mem0, Qdrant, Neo4j)
+        вместо написания с нуля. Фокус на интеграции и оркестрации,
+        не на инфраструктуре. Не изобретать то, что уже хорошо работает.
+    severity: should
+    tags: [dependencies, architecture, backend]
+    since: "2024-01"
