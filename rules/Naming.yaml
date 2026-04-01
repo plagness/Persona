@@ -128,4 +128,4 @@ rules:
         Это даёт хронологический контекст в каждом номере версии.
     severity: must
     tags: [versioning, workflow]
-    since: "2025-01"
+    since: "2026-01"

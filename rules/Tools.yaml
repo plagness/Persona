@@ -38,7 +38,7 @@ rules:
         Каждая зависимость — это ответственность.
     severity: must
     tags: [dependencies, minimalism, frontend]
-    since: "2025-01"
+    since: "2026-01"
 
   - id: code.splitting
     title:
@@ -55,7 +55,7 @@ rules:
         Настроено в `vite.config.ts` manualChunks.
     severity: must
     tags: [vite, performance, frontend]
-    since: "2025-06"
+    since: "2025-12"
 
   - id: cloudflare.ecosystem
     title:
@@ -72,7 +72,7 @@ rules:
         K3s кластер на Pi5 для внутренних сервисов.
     severity: must
     tags: [cloudflare, infrastructure, hosting]
-    since: "2025-03"
+    since: "2026-01"
 
   - id: dev.environment
     title:
@@ -106,4 +106,4 @@ rules:
         Никакого оборонительного программирования внутри доверенного кода.
     severity: should
     tags: [validation, api, safety]
-    since: "2025-06"
+    since: "2025-12"

@@ -21,7 +21,7 @@ rules:
         UI поддерживает двуязычность (ru/en) через систему i18n.
     severity: must
     tags: [communication, i18n, language]
-    since: "2025-01"
+    since: "2026-01"
 
   - id: verify.privacy
     title:
@@ -38,7 +38,7 @@ rules:
         Никогда не показывать сырые запросы, приватные каналы, GPS маршруты, биометрию.
     severity: must
     tags: [privacy, safety, data]
-    since: "2025-03"
+    since: "2026-03"
 
   - id: confirm.deploy
     title:
@@ -55,7 +55,7 @@ rules:
         Локальная разработка и тестирование не требуют подтверждения.
     severity: must
     tags: [deploy, safety, workflow]
-    since: "2025-03"
+    since: "2026-03"
 
   - id: quality.over.speed
     title:

@@ -23,7 +23,7 @@ rules:
         Только на английском, кратко (8-80 символов).
     severity: must
     tags: [git, commits, style]
-    since: "2025-01"
+    since: "2026-02"
 
   - id: active.pushing
     title:
@@ -57,7 +57,7 @@ rules:
         Внешние трекеры задач не нужны.
     severity: should
     tags: [github, tasks, organization]
-    since: "2025-01"
+    since: "2026-02"
 
   - id: branch.strategy
     title:
@@ -74,7 +74,7 @@ rules:
         Без feature-веток для соло-работы. Линейная история предпочтительна.
     severity: must
     tags: [git, branches, workflow]
-    since: "2025-01"
+    since: "2026-02"
 
   - id: manual.deploy
     title:
@@ -91,7 +91,7 @@ rules:
         Всегда проверять `--project-name` перед деплоем.
     severity: must
     tags: [deploy, cloudflare, safety]
-    since: "2025-03"
+    since: "2026-03"
 
   - id: etl.pipeline
     title:
@@ -110,4 +110,4 @@ rules:
         3. `python3 scripts/exportD1.py` — PostgreSQL → D1 SQL экспорт
     severity: must
     tags: [etl, data, pipeline]
-    since: "2025-03"
+    since: "2026-03"

@@ -38,7 +38,7 @@ rules:
         на метки перед ответом API. Применяются в обработчиках роутов.
     severity: must
     tags: [database, privacy, masking]
-    since: "2025-03"
+    since: "2026-02"
 
   - id: youtube.categories.only
     title:
@@ -55,7 +55,7 @@ rules:
         Без истории просмотров, без конкретных видео.
     severity: must
     tags: [youtube, privacy, data]
-    since: "2025-01"
+    since: "2026-01"
 
   - id: search.topics.only
     title:
@@ -72,7 +72,7 @@ rules:
         Страница Focus показывает 56 категорий, не отдельные запросы.
     severity: must
     tags: [search, privacy, data]
-    since: "2025-01"
+    since: "2026-01"
 
   - id: geo.low.precision
     title:
@@ -89,4 +89,4 @@ rules:
         Достаточно для визуализации на уровне города, не для трекинга.
     severity: must
     tags: [geo, privacy, gps]
-    since: "2025-01"
+    since: "2026-01"

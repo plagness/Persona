@@ -40,7 +40,7 @@ rules:
         Дженерики для API: `get<ResponseType>(path)`.
     severity: must
     tags: [typescript, react, patterns]
-    since: "2025-01"
+    since: "2026-01"
 
   - id: python.class.pattern
     title:
@@ -59,7 +59,7 @@ rules:
         Импорты: stdlib, потом third-party, потом локальные.
     severity: must
     tags: [python, patterns, etl]
-    since: "2025-03"
+    since: "2026-03"
 
   - id: api.response.format
     title:
@@ -76,7 +76,7 @@ rules:
         Null поля убираются через `stripNulls()` перед ответом.
     severity: must
     tags: [api, json, worker]
-    since: "2025-03"
+    since: "2026-03"
 
   - id: comments.minimal
     title:
@@ -95,4 +95,4 @@ rules:
         Никакого закомментированного кода в продакшене.
     severity: should
     tags: [comments, readability, style]
-    since: "2025-01"
+    since: "2026-01"

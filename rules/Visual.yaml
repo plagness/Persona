@@ -38,7 +38,7 @@ rules:
         Hover: `rgba(255,255,255,0.15)` — интерактивный подъём.
     severity: must
     tags: [borders, colors, ui]
-    since: "2025-03"
+    since: "2026-01"
 
   - id: glass.morphism
     title:
@@ -57,7 +57,7 @@ rules:
         Всегда с `border border-white/[0.08]`.
     severity: should
     tags: [glass, blur, ui]
-    since: "2025-03"
+    since: "2026-01"
 
   - id: accent.per.page
     title:
@@ -76,7 +76,7 @@ rules:
         Акцент используется в градиентах, рамках, свечениях, бейджах.
     severity: must
     tags: [colors, design, navigation]
-    since: "2025-03"
+    since: "2026-01"
 
   - id: text.hierarchy
     title:
@@ -112,7 +112,7 @@ rules:
         `backdrop-blur-xl bg-[#0a0a0a]/70`.
     severity: should
     tags: [cards, components, ui]
-    since: "2025-03"
+    since: "2026-01"
 
   - id: section.dividers
     title:
@@ -123,7 +123,7 @@ rules:
       ru: "Использовать `/* ── название секции ── */` комментарии для визуального разделения секций в компонентах."
     severity: prefer
     tags: [code, comments, style]
-    since: "2025-06"
+    since: "2026-02"
 
   - id: framer.motion.patterns
     title:
@@ -142,4 +142,4 @@ rules:
         Все анимации тонкие, не отвлекающие.
     severity: should
     tags: [animation, framer, ui]
-    since: "2025-06"
+    since: "2026-02"
