@@ -1,0 +1,17 @@
+category: tools
+type: personal
+status: active
+
+title:
+  en: "Persona"
+  ru: "Персона"
+
+description:
+  en: "Developer identity manifest — coding rules, philosophy, tech stack"
+  ru: "Манифест разработчика — правила кода, философия, стек технологий"
+
+tags: [persona, rules, identity, yaml]
+
+focus:
+  - documentation
+  - philosophy
